@@ -1,5 +1,3 @@
-import './App.css';
-
 import { useMemo, useState, useEffect } from 'react';
 import { useDebounce } from 'use-debounce';
 import { nanoid } from 'nanoid';
@@ -7,6 +5,8 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm';
 import SearchBox from './SearchBox';
 import ContactList from './ContactList';
+import clsx from 'clsx';
+import css from './App.module.css';
 
 const contactsList = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -54,8 +54,8 @@ function App() {
   }, [contacts]);
 
   return (
-    <div>
-  <h1>Phonebook</h1>
+    <div className={clsx(css.container)}>
+  <h1 className={clsx(css.title)}>Phonebook</h1>
       <ContactForm onSubmit={addNewContacts} />
       <SearchBox text={inputValue} onChange={setInputValue}/>
       <ContactList contacts={visibleNames} onChange={setContacts} onDelete={handleDelete} />

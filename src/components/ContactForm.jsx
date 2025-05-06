@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useId } from 'react';
 import { ContactSchema } from './ContactSchema';
+import clsx from "clsx";
+import css from "./ContactForm.module.css";
 
 export default function ContactForm({onSubmit}) {
     const nameId = useId();
@@ -16,11 +18,11 @@ export default function ContactForm({onSubmit}) {
             name: '',
             number: '',
         }} onSubmit={handleSubmit} validationSchema={ContactSchema}>
-            <Form>
+            <Form className={clsx(css.form)}>
                 <label htmlFor={nameId}>
             Name
           </label>
-                <Field type='text'
+                <Field className={clsx(css.field)} type='text'
             name='name'
             id={nameId}/>
                     <ErrorMessage
@@ -30,14 +32,14 @@ export default function ContactForm({onSubmit}) {
                  <label htmlFor={numberId}>
             Number
           </label>
-                <Field type='tel'
+                <Field className={clsx(css.field)} type='tel'
             name='number'
             id={numberId}/>
                     <ErrorMessage
             name='number'
             component='span'
                 />
-                 <button type='submit'>
+                 <button className={clsx(css.button)} type='submit'>
           Add contact
         </button>
             </Form>
